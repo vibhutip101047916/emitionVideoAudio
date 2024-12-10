@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Audio Upload Success</title>
+</head>
+<body>
+    <h1>Audio Upload Successful</h1>
+    <p><strong>Filename:</strong> {{ audio_filename }}</p>
+    <p><strong>Detected Emotion:</strong> {{ analysis['emotion'] }}</p>
+    <p><strong>Duration:</strong> {{ analysis['duration'] }}</p>
+    <p><strong>Tempo:</strong> {{ analysis['tempo'] }}</p>
+    <a href="{{ url_for('home') }}">Go back Home Page</a>
+
+    <audio controls>
+        <source src="{{ url_for('static', filename='uploads/audio/' + audio_filename) }}" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+</body>
+</html>

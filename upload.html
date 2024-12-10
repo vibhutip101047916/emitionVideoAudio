@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload a Video</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Upload Video</title>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Upload an Video File</h1>
+
+    <!-- <div class="container">
+        <h1>EMOTION VIDEO</h1>
+    </div> -->
+
+    <!-- Display success or error messages -->
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <!-- Form to upload a video -->
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <label for="file">Choose a video file:</label>
+        <input type="file" name="file" accept="video/*" required>
+        <button type="submit">Upload Video</button>
+    </form>
+    
+
+    <!-- Link to upload an audio file -->
+    <div>
+        <a href="/upload_audio">Upload an Audio File</a>
+    </div>
+
+    <!-- Section to display uploaded videos -->
+    <h2>Uploaded Videos</h2>
+    {% if videos %}
+        <ul>
+            {% for video in videos %}
+                <li>
+                    <strong>Filename:</strong> {{ video.filename }} <br>
+                    <strong>Emotion:</strong> {{ video.emotion }} <br>
+                    
+                    <!-- Video player -->
+                    <video width="320" height="240" controls>
+                        <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <!-- Delete button -->
+                    <form method="POST" action="{{ url_for('delete_video', filename=video.filename) }}">
+                        <button type="submit">Delete Video</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No videos uploaded yet.</p>
+    {% endif %}
+
+</body>
+</html>

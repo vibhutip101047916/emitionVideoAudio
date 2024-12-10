@@ -1,0 +1,135 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #e0f7fa; /* Set a background color */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Adjust for scrollable content */
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    overflow-y: auto; /* Enable vertical scroll for the body if content overflows */
+}
+
+/* Center the Heading */
+h1 {
+    color: blue;
+    text-align: center; /* Center the h1 text */
+    margin-bottom: 20px; /* Add space below the heading */
+}
+
+/* Styling for the Video and Audio Links */
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Use full width */
+    max-width: 600px; /* Max width for the links */
+    margin-bottom: 30px; /* Add space below the links */
+}
+
+.link-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    width: 45%; /* Make the links take up 45% width */
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+}
+
+.link-button:hover {
+    background-color: #0056b3;
+}
+
+/* Scrollable Form Section */
+form {
+    margin-bottom: 20px;
+    width: 100%; /* Ensure form stretches to full width */
+    max-width: 600px; /* Prevent form from stretching too wide */
+}
+
+form button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 50%; /* Make the button take full width */
+}
+
+form button:hover {
+    background-color: #dc3545;
+}
+
+/* Scrollable List Section */
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 50%;
+    max-width: 600px; /* Ensure the list doesn't stretch too wide */
+    overflow-y: auto; /* Allow scrolling if the list grows too large */
+    max-height: 300px; /* Limit the height and allow scrolling */
+}
+
+li {
+    margin: 15px 0;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Styling */
+.video-container {
+    display: flex;
+    flex-direction: column; /* Stack the video and button vertically */
+    align-items: center;
+    margin-bottom: 20px; /* Space between video and button */
+}
+
+video {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    background-color: #f5f5f5; /* Optional: Add background color to make it more visible */
+}
+
+/* Styling for Audio */
+audio {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f5f5f5; /* Optional: Add background color to make it more visible */
+}
+/* Delete Button Styling */
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px; /* Add space above the button */
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Scrollable Content Container */
+.scrollable-content {
+    max-height: 400px; /* Adjust this value to control the scrollable height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    width: 100%;
+    max-width: 600px; /* Control the width of the scrollable content */
+    margin-top: 20px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <h1>EMOTION UPLOAD VIDEO & AUDIO</h1>
+
+    <!-- Video Upload Form -->
+    <form action="/upload_video" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*"> <!-- Accepts only video files -->
+        <button type="submit">Upload Video</button>
+    </form>
+
+    <!-- Audio Upload Form -->
+    <form action="/upload_audio" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="audio/*"> <!-- Accepts only audio files -->
+        <button type="submit">Upload Audio</button>
+    </form>
+
+    <h2>Uploaded Videos</h2>
+    <ul>
+        {% for video in videos %}
+<!-- 
+        <form action="{{ url_for('upload_video') }}" method="POST" enctype="multipart/form-data">
+            <label for="file">Upload Video:</label>
+            <input type="file" name="file" accept="video/*">
+            <button type="submit">Upload</button>
+        </form> -->
+        <li>
+            <!-- Displaying Video with Controls -->
+            <video controls>
+                <source src="{{ url_for('static', filename='uploads/videos/' + video.filename) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>Emotion: {{ video.emotion }}</p>
+            <form action="/delete_video/{{ video.filename }}" method="post">
+                <button type="submit">Delete Video</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Uploaded Audios</h2>
+<ul>
+    {% for audio in audios %}
+    <li>
+        <p>{{ audio.filename }}</p>
+        <!-- Displaying Audio with Controls -->
+        <audio controls>
+            <source src="{{ url_for('static', filename='uploads/audios/' + audio.filename) }}" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <ul>
+            {% for key, value in audio.analysis.items() %}
+            <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+        <form action="/delete_audio/{{ audio.filename }}" method="post">
+            <button type="submit">Delete Audio</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
